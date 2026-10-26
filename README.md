@@ -1,7 +1,7 @@
 # Web3 Decentralized Voting dApp — School Project
 
 **Author / Developer:** Ernerst Mutai  
-**Project:** Decentralized Voting Application (dApp) — School Capstone  
+**Project:** Decentralized Voting Application (dApp)  
 **Curriculum Reference:** Lesson 10: DApps & Web3 Architecture  
   
 
