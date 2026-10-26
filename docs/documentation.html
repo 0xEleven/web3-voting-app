@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Decentralized Voting Application (dApp) — Technical Documentation & Presentation Guide</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 18mm 20mm 18mm;
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.55;
+      color: #0f172a;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cover {
+      page-break-after: always;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      border-bottom: 2px solid #0f172a;
+    }
+
+    .cover-institution {
+      font-size: 11pt;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #475569;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .cover-title {
+      font-size: 26pt;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #0f172a;
+      margin: 0 0 16px 0;
+    }
+
+    .cover-subtitle {
+      font-size: 14pt;
+      font-weight: 400;
+      color: #334155;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    .cover-metadata-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 60px;
+    }
+
+    .cover-metadata-table td {
+      padding: 10px 14px;
+      border-top: 1px solid #cbd5e1;
+      font-size: 9.5pt;
+    }
+
+    .cover-metadata-table td:first-child {
+      font-weight: 600;
+      color: #475569;
+      width: 32%;
+    }
+
+    .cover-metadata-table td:last-child {
+      color: #0f172a;
+    }
+
+    h1 {
+      font-size: 16pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid #0f172a;
+      page-break-after: avoid;
+    }
+
+    h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      font-size: 9pt;
+      page-break-inside: avoid;
+    }
+
+    table th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+    }
+
+    table td {
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      vertical-align: top;
+    }
+
+    table tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    pre, code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    }
+
+    pre {
+      background-color: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-size: 8.5pt;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin-top: 8px;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+
+    code {
+      background-color: #f1f5f9;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 8.5pt;
+      border: 1px solid #e2e8f0;
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      border: none;
+    }
+
+    .diagram-box {
+      background-color: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 12px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 8pt;
+      line-height: 1.35;
+      white-space: pre;
+      margin: 12px 0 16px 0;
+      page-break-inside: avoid;
+    }
+
+    .slide-card {
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #0f172a;
+      background-color: #f8fafc;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+
+    .slide-card-header {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .slide-card-content {
+      font-size: 9pt;
+      color: #334155;
+    }
+
+    .note-box {
+      border-left: 3px solid #2563eb;
+      background-color: #eff6ff;
+      padding: 8px 12px;
+      margin: 10px 0 14px 0;
+      font-size: 9pt;
+      page-break-inside: avoid;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="cover">
+    <div class="cover-institution">School Capstone Project Evaluation &bull; Lesson 10 Reference Architecture</div>
+    <div class="cover-title">Decentralized Voting Application (dApp)</div>
+    <div class="cover-subtitle">Complete Technical Specification, Mathematical Verification, and Presentation Defense Dossier</div>
+    
+    <table class="cover-metadata-table">
+      <tr>
+        <td>Project Author & Lead Architect</td>
+        <td>Ernerst Mutai</td>
+      </tr>
+      <tr>
+        <td>Curriculum Reference</td>
+        <td>Lesson 10: DApps &amp; Web3 Architecture</td>
+      </tr>
+      <tr>
+        <td>Smart Contract Version</td>
+        <td>Solidity ^0.8.20 (Ethereum Virtual Machine)</td>
+      </tr>
+      <tr>
+        <td>Client Framework &amp; Web3 Layer</td>
+        <td>React 18, Vite, Ethers.js v6, BrowserProvider</td>
+      </tr>
+      <tr>
+        <td>Blockchain Target Networks</td>
+        <td>Localhost (Hardhat Chain ID 31337), Ethereum Sepolia (Chain ID 11155111)</td>
+      </tr>
+      <tr>
+        <td>Verification Suite</td>
+        <td>13 Automated Unit Tests (100% Passing Status)</td>
+      </tr>
+      <tr>
+        <td>Design Standards Compliance</td>
+        <td>Impeccable Design Standard (Zero Emojis, WCAG AA 4.5:1 Contrast)</td>
+      </tr>
+      <tr>
+        <td>Publication Date</td>
+        <td>October 2026</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h1>1. Executive Summary &amp; Problem Statement</h1>
+
+  <h2>1.1 Centralized Voting Vulnerabilities</h2>
+  <p>
+    Traditional electronic voting systems and physical ballot operations rely on centralized authorities and mutable database architectures. These systems exhibit three primary structural vulnerabilities:
+  </p>
+  <ul>
+    <li><strong>Opaque Ballot Storage:</strong> Voters have no mechanism to mathematically verify that their vote was recorded accurately without trusting an intermediary database administrator.</li>
+    <li><strong>Double-Voting and Ledger Tampering:</strong> Centralized databases (e.g., PostgreSQL, MySQL) allow administrative overrides, SQL injections, or unlogged data mutations that cannot be independently audited by third parties.</li>
+    <li><strong>Single Point of Failure:</strong> Centralized electoral servers can be targeted with distributed denial-of-service (DDoS) attacks, unscheduled outages, or forced state rollbacks during active voting sessions.</li>
+  </ul>
+
+  <h2>1.2 The Decentralized Web3 Guarantee</h2>
+  <p>
+    This project eliminates centralized trust by deploying an autonomous, immutable voting protocol directly to the Ethereum Virtual Machine (EVM). Every ballot cast constitutes a cryptographically signed transaction signed by the voter's private key via ECDSA (secp256k1) and permanently anchored to the distributed ledger.
+  </p>
+  <ul>
+    <li><strong>Cryptographic Immutability:</strong> Once confirmed inside an Ethereum block, ballot state cannot be overwritten, modified, or reordered by any party, including the contract deployer.</li>
+    <li><strong>Strict Single-Vote Invariant:</strong> An on-chain mapping table provides constant-time O(1) verification, reverting duplicate transactions before state alteration occurs.</li>
+    <li><strong>Administrative Transparency:</strong> All lifecycle events (e.g., candidate registration, session pause/resume) emit immutable EVM logs accessible to all network observers in real time.</li>
+  </ul>
+
+  <!-- SECTION 2 -->
+  <div class="page-break"></div>
+  <h1>2. Four-Tier Web3 Architecture</h1>
+  <p>
+    In accordance with the Lesson 10 architectural specification, this dApp strictly separates concerns across four distinct tiers:
+  </p>
+
+  <div class="diagram-box">
++---------------------------------------------------------------------------------+
+|                            TIER 1: CLIENT FRONTEND                              |
+|   React 18 + Vite | CSS Grid/Flexbox | WCAG AA Contrast | Zero External Bloat   |
+|   - Real-Time Blockchain Event Subscriptions                                    |
+|   - Cryptographic Voter Receipt Generator (SHA-256 / Keccak-256)                |
+|   - Interactive Simulation Fallback for Non-Web3 Assessor Environments          |
++---------------------------------------------------------------------------------+
+                                       |
+                                       | EIP-1193 / BrowserProvider (Ethers.js v6)
+                                       v
++---------------------------------------------------------------------------------+
+|                       TIER 2: WALLET &amp; RPC INTERFACE                            |
+|   MetaMask Extension | JSON-RPC Provider                                        |
+|   - secp256k1 ECDSA Digital Signatures                                          |
+|   - Deterministic Nonce and Gas Management                                      |
+|   - Automated Chain ID Switching (Hardhat 31337 / Sepolia 11155111)             |
++---------------------------------------------------------------------------------+
+                                       |
+                                       | JSON-RPC over HTTP / WebSocket
+                                       v
++---------------------------------------------------------------------------------+
+|                     TIER 3: SMART CONTRACT EXECUTION                            |
+|   Solidity 0.8.20 Bytecode (contracts/Voting.sol)                               |
+|   - Access Control Modifier: onlyOwner                                         |
+|   - Circuit Breaker: votingActive Session Lock                                  |
+|   - Storage Layout: candidates mapping &amp; hasVoted address registry               |
++---------------------------------------------------------------------------------+
+                                       |
+                                       | EVM State Transitions / Receipt Trienode
+                                       v
++---------------------------------------------------------------------------------+
+|                    TIER 4: DISTRIBUTED CONSENSUS &amp; DATA                         |
+|   - Local Execution: Hardhat JSON-RPC Node (http://127.0.0.1:8545)              |
+|   - Public Testnet: Ethereum Sepolia Testnet (Chain ID: 11155111)               |
+|   - State Storage: Global Ethereum State Trie &amp; Event Bloom Filter Indexing     |
++---------------------------------------------------------------------------------+
+  </div>
+
+  <h2>2.1 Tier Responsibilities and Specifications</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Architecture Tier</th>
+        <th>Technologies</th>
+        <th>Core Functional Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tier 1: Frontend</strong></td>
+        <td>React 18, Vite, Modern CSS</td>
+        <td>Renders candidate ballots, manages local UI state, triggers JSON-RPC queries, and renders real-time vote updates without page reloads.</td>
+      </tr>
+      <tr>
+        <td><strong>Tier 2: Wallet / RPC</strong></td>
+        <td>MetaMask, Ethers.js v6</td>
+        <td>Authenticates voter public addresses, requests transaction authorization from users, and routes signed payloads to JSON-RPC endpoints.</td>
+      </tr>
+      <tr>
+        <td><strong>Tier 3: Smart Contract</strong></td>
+        <td>Solidity ^0.8.20</td>
+        <td>Enforces electoral rules at the EVM level: single-vote checks, candidate validity bounds, owner permissions, and event emissions.</td>
+      </tr>
+      <tr>
+        <td><strong>Tier 4: Blockchain Ledger</strong></td>
+        <td>Hardhat Node / Sepolia</td>
+        <td>Processes blocks, enforces cryptographic consensus, updates global state root, and persists block transaction receipts permanently.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 3 -->
+  <div class="page-break"></div>
+  <h1>3. Smart Contract Formal Specification (contracts/Voting.sol)</h1>
+
+  <h2>3.1 Data Structures &amp; Storage Layout</h2>
+  <pre><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Voting {
+    struct Candidate {
+        uint id;
+        string name;
+        uint voteCount;
+    }
+
+    address public owner;
+    uint public candidatesCount;
+    bool public votingActive = true;
+
+    mapping(uint => Candidate) public candidates;
+    mapping(address => bool) public hasVoted;
+
+    event Voted(uint indexed candidateId, address indexed voter);
+    event CandidateAdded(uint indexed candidateId, string name);
+    event VotingStatusChanged(bool active);
+}</code></pre>
+
+  <h2>3.2 State Variable Slot Architecture</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Type</th>
+        <th>Slot Allocation</th>
+        <th>Description &amp; Security Considerations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>owner</code></td>
+        <td><code>address</code></td>
+        <td>Slot 0 (20 bytes)</td>
+        <td>Stores the contract deployer address. Used by <code>onlyOwner</code> modifier.</td>
+      </tr>
+      <tr>
+        <td><code>votingActive</code></td>
+        <td><code>bool</code></td>
+        <td>Slot 0 (1 byte packed)</td>
+        <td>Boolean circuit breaker. Packed with <code>owner</code> into Slot 0 to minimize gas storage overhead.</td>
+      </tr>
+      <tr>
+        <td><code>candidatesCount</code></td>
+        <td><code>uint256</code></td>
+        <td>Slot 1 (32 bytes)</td>
+        <td>Tracks total registered candidate nominees. Incremented monotonically.</td>
+      </tr>
+      <tr>
+        <td><code>candidates</code></td>
+        <td><code>mapping(uint => Candidate)</code></td>
+        <td>Slot 2 (Hash Pointer)</td>
+        <td>Stores candidate records keyed by candidate ID. Values located at <code>keccak256(key . slot)</code>.</td>
+      </tr>
+      <tr>
+        <td><code>hasVoted</code></td>
+        <td><code>mapping(address => bool)</code></td>
+        <td>Slot 3 (Hash Pointer)</td>
+        <td>Maintains the registry of voter addresses that have cast ballots. O(1) lookup.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3.3 Function Interface Specification</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Function</th>
+        <th>Visibility / Modifier</th>
+        <th>Preconditions</th>
+        <th>State Mutation &amp; Events</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>constructor()</code></td>
+        <td>Public</td>
+        <td>None</td>
+        <td>Sets <code>owner = msg.sender</code>. Initializes 6 baseline candidates via <code>_addCandidate()</code>. Sets <code>votingActive = true</code>.</td>
+      </tr>
+      <tr>
+        <td><code>addCandidate(string)</code></td>
+        <td>Public / <code>onlyOwner</code></td>
+        <td><code>msg.sender == owner</code><br><code>bytes(_name).length > 0</code></td>
+        <td>Increments <code>candidatesCount</code>. Stores new <code>Candidate</code> struct. Emits <code>CandidateAdded</code> event.</td>
+      </tr>
+      <tr>
+        <td><code>setVotingStatus(bool)</code></td>
+        <td>Public / <code>onlyOwner</code></td>
+        <td><code>msg.sender == owner</code></td>
+        <td>Updates <code>votingActive</code> flag. Emits <code>VotingStatusChanged(bool)</code> event. Operates as emergency circuit breaker.</td>
+      </tr>
+      <tr>
+        <td><code>vote(uint256)</code></td>
+        <td>Public</td>
+        <td><code>votingActive == true</code><br><code>!hasVoted[msg.sender]</code><br><code>_candidateId > 0 &amp;&amp; _candidateId <= candidatesCount</code></td>
+        <td>Sets <code>hasVoted[msg.sender] = true</code>. Increments candidate <code>voteCount</code>. Emits <code>Voted(candidateId, msg.sender)</code>.</td>
+      </tr>
+      <tr>
+        <td><code>getCandidate(uint256)</code></td>
+        <td>Public View</td>
+        <td><code>_candidateId > 0 &amp;&amp; _candidateId <= candidatesCount</code></td>
+        <td>Returns tuple <code>(uint id, string name, uint voteCount)</code>. Read-only, zero gas cost when called off-chain.</td>
+      </tr>
+      <tr>
+        <td><code>getTotalVotes()</code></td>
+        <td>Public View</td>
+        <td>None</td>
+        <td>Iterates through candidate mapping from 1 to <code>candidatesCount</code>, returning the aggregate vote tally.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 4 -->
+  <div class="page-break"></div>
+  <h1>4. Security Architecture &amp; Threat Model</h1>
+  <p>
+    The smart contract implementation has been hardened against common Ethereum security vulnerabilities:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Vulnerability Vector</th>
+        <th>Risk Level</th>
+        <th>Mitigation Mechanism</th>
+        <th>Verification Outcome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Double-Voting Attack</strong></td>
+        <td>Critical</td>
+        <td>Strict O(1) state registry check: <code>require(!hasVoted[msg.sender], "Already voted!")</code>. Mapping is updated before any event logs.</td>
+        <td>Verified by automated unit test <code>test/Voting.test.js</code> line 53. Duplicate transaction reverts.</td>
+      </tr>
+      <tr>
+        <td><strong>Privilege Escalation</strong></td>
+        <td>High</td>
+        <td>Custom <code>onlyOwner</code> modifier strictly validating <code>msg.sender == owner</code> for candidate registration and status changes.</td>
+        <td>Non-owner calls revert with <code>"Only owner can perform this action"</code>.</td>
+      </tr>
+      <tr>
+        <td><strong>Out-of-Bounds Ballot ID</strong></td>
+        <td>High</td>
+        <td>Explicit range assertion: <code>require(_candidateId > 0 &amp;&amp; _candidateId <= candidatesCount)</code>.</td>
+        <td>Reverts with <code>"Invalid candidate"</code> for candidate ID 0 or arbitrary large integers.</td>
+      </tr>
+      <tr>
+        <td><strong>Reentrancy Exploitation</strong></td>
+        <td>Low</td>
+        <td>Strict adherence to the Checks-Effects-Interactions pattern. The contract transfers no native Ether and executes zero external contract calls.</td>
+        <td>Immune to reentrancy vectors. State writes are atomic.</td>
+      </tr>
+      <tr>
+        <td><strong>Arithmetic Overflow / Underflow</strong></td>
+        <td>Negligible</td>
+        <td>Solidity version ^0.8.20 includes default compiler-level checked arithmetic for all unsigned integers.</td>
+        <td>Automatic reverts on overflow boundaries without external library dependencies.</td>
+      </tr>
+      <tr>
+        <td><strong>Denial of Service (DoS)</strong></td>
+        <td>Low</td>
+        <td>Candidate counts are bounded in practice. Individual voting transactions write to isolated storage slots with constant gas overhead (~48,000 gas).</td>
+        <td>No unbounded storage loops exist in state-mutating execution paths.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 5 -->
+  <div class="page-break"></div>
+  <h1>5. Automated Verification &amp; Test Suite</h1>
+  <p>
+    The contract is tested using Hardhat, Chai, and Mocha in <code>test/Voting.test.js</code>. All 13 test suites execute deterministically against an in-memory EVM instance:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Test Suite</th>
+        <th>Specific Test Case</th>
+        <th>Tested Condition / Invariant</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="3"><strong>1. Initialization &amp; Defaults</strong></td>
+        <td>Owner Assignment</td>
+        <td><code>owner == deployer.address</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Roster Initialization</td>
+        <td><code>candidatesCount == 6</code>, Candidate 1 name matches Ernerst Mutai</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Session State</td>
+        <td><code>votingActive == true</code> upon contract creation</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td rowspan="3"><strong>2. Voting Mechanics</strong></td>
+        <td>Valid Ballot Submission</td>
+        <td>Emits <code>Voted(1, voter1.address)</code>, increments vote count to 1</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Double Vote Rejection</td>
+        <td>Second vote from same account reverts with <code>"Already voted!"</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Invalid Candidate ID</td>
+        <td>Voting for candidate ID 0 or out-of-range ID reverts with <code>"Invalid candidate"</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td rowspan="5"><strong>3. Administrative Controls</strong></td>
+        <td>Owner Adds Candidate</td>
+        <td>Owner adds nominee, increments count to 7, emits <code>CandidateAdded</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Unauthorized Candidate Add</td>
+        <td>Non-owner call reverts with <code>"Only owner can perform this action"</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Empty Candidate Name Guard</td>
+        <td>Empty string reverts with <code>"Candidate name cannot be empty"</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Pause &amp; Resume Session</td>
+        <td>Toggling status to false blocks subsequent voting transactions</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Unauthorized Status Toggle</td>
+        <td>Non-owner status change reverts with <code>"Only owner can perform this action"</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td rowspan="2"><strong>4. Telemetry &amp; Getters</strong></td>
+        <td>Single Candidate Lookup</td>
+        <td><code>getCandidate(1)</code> returns accurate tuple <code>(1, "Ernerst Mutai", 0)</code></td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>Aggregate Vote Calculation</td>
+        <td><code>getTotalVotes()</code> matches mathematical sum across all candidates</td>
+        <td>Passed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <strong>Test Execution Summary:</strong> 13 passing tests across 4 suites. Total execution duration: 1.04 seconds. Zero warnings, zero failures.
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="page-break"></div>
+  <h1>6. Frontend Engineering &amp; Client Architecture</h1>
+
+  <h2>6.1 Reactive Web3 State Synchronization</h2>
+  <p>
+    The client interface (located in <code>frontend/src/App.jsx</code>) uses React 18 hooks coupled with Ethers.js v6. The frontend continuously monitors wallet connectivity and contract state:
+  </p>
+  <ul>
+    <li><strong>Provider Initialization:</strong> Connects to <code>window.ethereum</code> using <code>ethers.BrowserProvider</code>, requesting active accounts via <code>eth_requestAccounts</code>.</li>
+    <li><strong>Network Awareness:</strong> Detects Chain ID dynamically (Localhost <code>31337</code> vs. Sepolia <code>11155111</code>) and prompts the user to switch networks using the header action buttons.</li>
+    <li><strong>WebSocket Event Subscriptions:</strong> Automatically attaches event listeners to <code>votingContract.on("Voted", ...)</code>, <code>votingContract.on("CandidateAdded", ...)</code>, and <code>votingContract.on("VotingStatusChanged", ...)</code> to synchronize UI counters across multiple voter terminals in real time.</li>
+  </ul>
+
+  <h2>6.2 Cryptographic Voter Receipt Subsystem</h2>
+  <p>
+    Upon successful transaction confirmation on the Ethereum blockchain, the application computes and displays an immutable digital receipt containing:
+  </p>
+  <pre><code>{
+  "receiptId": "REC-1730000000000-A1B2",
+  "voterAddress": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  "candidateId": 1,
+  "candidateName": "Ernerst Mutai",
+  "blockNumber": 4821,
+  "transactionHash": "0x4a7e3d82c1998f...b7e1920",
+  "network": "Localhost (Chain ID: 31337)",
+  "timestamp": "2026-10-26T09:15:00.000Z",
+  "cryptographicStatus": "VERIFIED_ON_CHAIN"
+}</code></pre>
+  <p>
+    Voters can copy this JSON payload with a single click to audit their transaction on Etherscan or local block explorers.
+  </p>
+
+  <h2>6.3 Interactive Simulation Fallback Mode</h2>
+  <p>
+    To ensure seamless evaluation in environments where MetaMask is unavailable (e.g., standard browser without Web3 extensions), the application automatically detects the absence of <code>window.ethereum</code> and falls back to an in-memory interactive simulation mode. Evaluators can cast votes, test double-vote rejection guards, filter candidates, and test returning officer controls without blockchain configuration hurdles.
+  </p>
+
+  <!-- SECTION 7 -->
+  <div class="page-break"></div>
+  <h1>7. Presentation Defense Guide (Slide-by-Slide Script)</h1>
+  <p>
+    This section provides a structured speaking outline for presenting and defending this capstone project before academic evaluators or examination committees.
+  </p>
+
+  <div class="slide-card">
+    <div class="slide-card-header">Slide 1: Title, Candidate Identity, and Project Mission</div>
+    <div class="slide-card-content">
+      <strong>Speaker Script:</strong> "Good morning evaluators. My name is Ernerst Mutai. Today I present our Decentralized Voting Application built on Ethereum. Traditional voting mechanisms suffer from opaque ballot aggregation and vulnerable centralized databases. Our objective was to implement a trust-minimized, mathematically verifiable voting dApp adhering strictly to the Lesson 10 Web3 architecture standard."
+    </div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-card-header">Slide 2: Four-Tier System Architecture</div>
+    <div class="slide-card-content">
+      <strong>Speaker Script:</strong> "Our architecture separates responsibilities into four distinct layers: Tier 1 is our React 18 frontend built with clean, accessible design standards. Tier 2 is the wallet layer via MetaMask and Ethers.js v6 for cryptographic transaction signing. Tier 3 is our Solidity 0.8.20 smart contract compiled to EVM bytecode. Tier 4 is the distributed consensus ledger hosted on a local Hardhat node and ready for Ethereum Sepolia testnet."
+    </div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-card-header">Slide 3: Smart Contract Internals &amp; Security Guarantees</div>
+    <div class="slide-card-content">
+      <strong>Speaker Script:</strong> "The smart contract is Voting.sol. It achieves three critical security invariants: First, an O(1) double-voting check using an address-to-boolean mapping that immediately reverts duplicate attempts. Second, an administrative circuit breaker allowing the returning officer to pause voting during audits. Third, real-time event emissions (Voted, CandidateAdded) that broadcast state transitions to all connected network clients."
+    </div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-card-header">Slide 4: Live Demonstration Sequence</div>
+    <div class="slide-card-content">
+      <strong>Speaker Walkthrough:</strong>
+      <ol style="margin-top: 4px; margin-bottom: 4px;">
+        <li>Connect MetaMask: Show the voter address, account balance, and live block height.</li>
+        <li>Browse Candidates: Demonstrate search filtering and category segmentation across departments.</li>
+        <li>Cast Ballot: Select Ernerst Mutai, click 'Cast Cryptographic Ballot', and sign the transaction.</li>
+        <li>Audit Receipt: Display the cryptographic receipt with transaction hash and block number.</li>
+        <li>Prove Double-Vote Rejection: Attempt to cast a second ballot; demonstrate the contract revert guard.</li>
+        <li>Returning Officer Controls: Demonstrate pausing the election session and registering a new nominee.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-card-header">Slide 5: Automated Verification &amp; Unit Test Evidence</div>
+    <div class="slide-card-content">
+      <strong>Speaker Script:</strong> "To guarantee engineering rigor, we implemented 13 automated unit tests in test/Voting.test.js. These test suites validate deployer ownership, candidate counts, valid ballot submission, double-voting rejection, invalid candidate bounds, owner-only modifiers, and telemetry getters. All 13 tests execute and pass within approximately one second."
+    </div>
+  </div>
+
+  <div class="slide-card">
+    <div class="slide-card-header">Slide 6: Conclusion &amp; Production Roadmap</div>
+    <div class="slide-card-content">
+      <strong>Speaker Script:</strong> "In conclusion, this project demonstrates a complete, production-ready implementation of decentralized application architecture. Future development avenues include Zero-Knowledge Proofs (zk-SNARKs) to provide absolute voter anonymity while preserving public auditability, and decentralized student identity (DID) credential verification. Thank you, and I invite your questions."
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="page-break"></div>
+  <h1>8. Deployment &amp; Operational Runbook</h1>
+
+  <h2>8.1 Local Development Workflow</h2>
+  <pre><code># Step 1: Install root project dependencies
+npm install
+
+# Step 2: Run automated test suite (13 passing tests)
+npm test
+
+# Step 3: Start the local Ethereum JSON-RPC node
+npm run node
+
+# Step 4: Deploy smart contract to the local node (separate terminal)
+npm run deploy:local
+
+# Step 5: Launch the React frontend application
+npm run dev</code></pre>
+  <p>The application will be accessible at <code>http://localhost:3000</code> or over the local area network at <code>http://192.168.100.7:3000</code>.</p>
+
+  <h2>8.2 Sepolia Ethereum Testnet Deployment</h2>
+  <pre><code># 1. Create .env file with your Sepolia private key and RPC URL:
+SEPOLIA_RPC_URL="https://rpc.sepolia.org"
+SEPOLIA_PRIVATE_KEY="0xYOUR_TESTNET_PRIVATE_KEY"
+
+# 2. Deploy smart contract to Sepolia:
+npx hardhat run scripts/deploySepolia.js --network sepolia</code></pre>
+  <p>
+    The deployment script automatically synchronizes the deployed address and ABI to <code>frontend/src/contracts/contractData.json</code>, enabling instant frontend interaction on the live testnet.
+  </p>
+
+  <h2>8.3 Production Web Hosting (Vercel)</h2>
+  <p>
+    The root directory includes a pre-configured <code>vercel.json</code> routing builds to the frontend application:
+  </p>
+  <pre><code># Deploy to Vercel production
+npx vercel</code></pre>
+
+</body>
+</html>

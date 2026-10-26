@@ -3,24 +3,31 @@
 **Author / Developer:** Ernerst Mutai  
 **Project:** Decentralized Voting Application (dApp)  
 **Curriculum Reference:** Lesson 10: DApps & Web3 Architecture  
-  
 
 ---
 
-## 🏛️ System Architecture
+## Technical Documentation & Presentation Dossier
+
+- **Full Technical Specification & Defense Script:** [DOCUMENTATION.md](DOCUMENTATION.md)
+- **Compiled Presentation & Defense PDF:** [Web3_Voting_dApp_Technical_Documentation.pdf](Web3_Voting_dApp_Technical_Documentation.pdf)
+- **Print-Optimized HTML Documentation:** [docs/documentation.html](docs/documentation.html)
+
+---
+
+## System Architecture
 
 This project strictly implements the 4-tier Web3 architecture from **Lesson 10**:
 
 | Layer | Technology | Role & Functionality |
 | :--- | :--- | :--- |
-| **Frontend (UI Layer)** | React, Vite, Modern CSS | User interaction, voting interface, live vote counts, candidate registration, search & category filters |
+| **Frontend (UI Layer)** | React 18, Vite, Modern CSS | User interaction, voting interface, live vote counts, candidate registration, search & category filters |
 | **Web3 / Wallet Layer** | MetaMask, Ethers.js v6 | Signs transactions, manages accounts, connects frontend to blockchain, real-time WebSocket/JSON-RPC event subscriptions |
 | **Smart Contracts (Backend)** | Solidity ^0.8.20, Hardhat | Business rules, candidate storage, vote tallying, double-voting prevention, pause/resume circuit breaker |
 | **Blockchain Network (Data)** | Hardhat Node (Localhost 8545) & Sepolia Testnet | Stores smart contracts, validates blocks, immutable state storage |
 
 ---
 
-##  Implemented Bonus Features (Lesson 10 Pages 12 & 13)
+## Implemented Bonus Features (Lesson 10 Pages 12 & 13)
 
 1. **Admin-Only Candidate Creation & Circuit Breaker:**
    - Contract deployer has access to `addCandidate(name)` and `setVotingStatus(bool)`.
@@ -47,12 +54,15 @@ This project strictly implements the 4-tier Web3 architecture from **Lesson 10**
 
 ---
 
-##  Project Directory Structure
+## Project Directory Structure
 
 ```text
 web3-voting-app/
 ├── contracts/
 │   └── Voting.sol             # Smart Contract with Ernerst Mutai & bonus features
+├── docs/
+│   ├── documentation.html     # Print-optimized HTML documentation
+│   └── Web3_Voting_dApp_Technical_Documentation.pdf # Presentation PDF
 ├── scripts/
 │   ├── deploy.js              # Localhost deployment script
 │   └── deploySepolia.js       # Sepolia testnet deployment script
@@ -62,13 +72,15 @@ web3-voting-app/
 ├── hardhat.config.js          # Hardhat configuration (Solidity 0.8.20, Localhost & Sepolia)
 ├── vercel.json                # Online deployment configuration
 ├── .env.example               # Sepolia testnet environment template
+├── DOCUMENTATION.md           # Full technical specification & defense guide
+├── Web3_Voting_dApp_Technical_Documentation.pdf # Root presentation PDF
 ├── package.json               # Root dependencies and scripts
 └── frontend/
     ├── src/
     │   ├── App.jsx            # Complete React dApp with real-time events & receipts
     │   ├── components/
     │   │   └── Icons.jsx      # High-visibility SVG icons
-    │   ├── index.css          # Light mode stylesheet (Impeccable compliant)
+    │   ├── index.css          # Clean stylesheet (Impeccable compliant)
     │   ├── main.jsx           # React DOM root
     │   └── contracts/
     │       └── contractData.json # Synced address & ABI
@@ -79,7 +91,7 @@ web3-voting-app/
 
 ---
 
-##  Quick Start Guide
+## Quick Start Guide
 
 ### 1. Run Unit Tests (13/13 Passing)
 ```bash
@@ -109,11 +121,11 @@ cmd /c npx hardhat run scripts/deploySepolia.js --network sepolia
 cd frontend
 cmd /c npm run dev
 ```
-Open **`http://localhost:3000`** in your browser.
+Open `http://localhost:3000` in your browser.
 
 ---
 
-##  MetaMask Configuration
+## MetaMask Configuration
 
 To connect MetaMask:
 - **Localhost:** Click the **`Localhost (8545)`** button in the header (or manually add `http://127.0.0.1:8545`, Chain ID `31337`).
