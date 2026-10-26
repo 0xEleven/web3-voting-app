@@ -20,7 +20,7 @@ This project strictly implements the 4-tier Web3 architecture from **Lesson 10**
 
 ---
 
-## 🌟 Implemented Bonus Features (Lesson 10 Pages 12 & 13)
+##  Implemented Bonus Features (Lesson 10 Pages 12 & 13)
 
 1. **Admin-Only Candidate Creation & Circuit Breaker:**
    - Contract deployer has access to `addCandidate(name)` and `setVotingStatus(bool)`.
@@ -47,7 +47,7 @@ This project strictly implements the 4-tier Web3 architecture from **Lesson 10**
 
 ---
 
-## 📁 Project Directory Structure
+##  Project Directory Structure
 
 ```text
 web3-voting-app/
@@ -79,7 +79,7 @@ web3-voting-app/
 
 ---
 
-## 🚀 Quick Start Guide
+##  Quick Start Guide
 
 ### 1. Run Unit Tests (13/13 Passing)
 ```bash
@@ -113,7 +113,7 @@ Open **`http://localhost:3000`** in your browser.
 
 ---
 
-## 🦊 MetaMask Configuration
+##  MetaMask Configuration
 
 To connect MetaMask:
 - **Localhost:** Click the **`Localhost (8545)`** button in the header (or manually add `http://127.0.0.1:8545`, Chain ID `31337`).
