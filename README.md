@@ -3,7 +3,7 @@
 **Author / Developer:** Ernerst Mutai  
 **Project:** Decentralized Voting Application (dApp) — School Capstone  
 **Curriculum Reference:** Lesson 10: DApps & Web3 Architecture  
-**Design Standard:** [Impeccable Design Language](https://github.com/pbakaus/impeccable) (Verified: **0 Anti-Patterns**)  
+  
 
 ---
 
