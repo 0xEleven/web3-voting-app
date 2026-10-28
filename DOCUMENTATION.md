@@ -1,7 +1,7 @@
 # Decentralized Voting Application (dApp)
 ## Complete Technical Specification, Architecture, and Presentation Guide
 
-**Author / Lead Architect:** Ernerst Mutai  
+**Author / Lead Architect:** Ernest Mutai  
 **Curriculum Reference:** Lesson 10: DApps & Web3 Architecture  
 **Target Environment:** Ethereum Virtual Machine (EVM) / Hardhat Node / Sepolia Testnet  
 **Interface:** React 18, Ethers.js v6, Modern CSS  
@@ -240,7 +240,7 @@ The frontend is built using React 18 and Vite, located in `frontend/`. It compli
 Use this structured walkthrough during your project presentation or capstone defense before faculty evaluators:
 
 ### Slide 1: Introduction & Mission
-- **Speaking Points:** "Good morning, evaluators. My name is Ernerst Mutai. Today I present our Decentralized Voting Application built on Ethereum. Centralized voting systems suffer from single points of failure, unprovable database records, and double-voting vulnerabilities. Our solution introduces cryptographic ballot casting where every vote is an immutable blockchain transaction."
+- **Speaking Points:** "Good morning, evaluators. My name is Ernest Mutai. Today I present our Decentralized Voting Application built on Ethereum. Centralized voting systems suffer from single points of failure, unprovable database records, and double-voting vulnerabilities. Our solution introduces cryptographic ballot casting where every vote is an immutable blockchain transaction."
 
 ### Slide 2: 4-Tier Web3 Architecture
 - **Speaking Points:** "Our system implements the four-tier Web3 architecture:
@@ -256,7 +256,7 @@ Use this structured walkthrough during your project presentation or capstone def
 - **Demonstration Steps:**
   1. **Connect Wallet:** Click 'Connect MetaMask'. Point out the address display, network badge, and live block height.
   2. **Audit Nominee Roster:** Demonstrate the candidate cards, search filtering, and category selection.
-  3. **Cast Ballot:** Select candidate Ernerst Mutai and click 'Cast Cryptographic Ballot'. Confirm the transaction in MetaMask.
+  3. **Cast Ballot:** Select candidate Ernest Mutai and click 'Cast Cryptographic Ballot'. Confirm the transaction in MetaMask.
   4. **Inspect Receipt:** Show the generated voter receipt containing the transaction hash and block number.
   5. **Demonstrate Double-Vote Rejection:** Attempt to cast a second vote. Show the immediate revert guard preventing double submission.
   6. **Returning Officer Controls:** Show the administrative panel allowing the deployer to pause voting and register new certified candidates.

@@ -1,6 +1,6 @@
 # Web3 Decentralized Voting dApp — School Project
 
-**Author / Developer:** Ernerst Mutai  
+**Author / Developer:** Ernest Mutai  
 **Project:** Decentralized Voting Application (dApp)  
 **Curriculum Reference:** Lesson 10: DApps & Web3 Architecture  
 
@@ -59,7 +59,7 @@ This project strictly implements the 4-tier Web3 architecture from **Lesson 10**
 ```text
 web3-voting-app/
 ├── contracts/
-│   └── Voting.sol             # Smart Contract with Ernerst Mutai & bonus features
+│   └── Voting.sol             # Smart Contract with Ernest Mutai & bonus features
 ├── docs/
 │   ├── documentation.html     # Print-optimized HTML documentation
 │   └── Web3_Voting_dApp_Technical_Documentation.pdf # Presentation PDF

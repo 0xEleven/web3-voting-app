@@ -4,9 +4,9 @@
 A verifiable, decentralized student election platform built on Ethereum smart contracts. Designed as a school capstone project to demonstrate the complete 4-tier Web3 architecture: Frontend (React) → Web3/Wallet (MetaMask/Ethers v6) → Smart Contracts (Solidity 0.8.20) → Blockchain Ledger (Hardhat 31337).
 
 ## 2. Key Identity & People
-- **Student Developer & Chief Electoral Architect:** Ernerst Mutai
-- **Lead Candidate:** Ernerst Mutai (Presidential Nominee)
-- **Secondary Nominee:** Ernerst Mutai (Student Council Representative)
+- **Student Developer & Chief Electoral Architect:** Ernest Mutai
+- **Lead Candidate:** Ernest Mutai (Presidential Nominee)
+- **Secondary Nominee:** Ernest Mutai (Student Council Representative)
 
 ## 3. Audience & Context
 - **Audience:** Academic evaluators, computer science faculty, student voters.

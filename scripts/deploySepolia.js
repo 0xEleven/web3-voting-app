@@ -5,7 +5,7 @@ const path = require("path");
 async function main() {
   console.log("=================================================");
   console.log("Deploying Voting Contract to Ethereum Sepolia...");
-  console.log("School Project by Ernerst Mutai");
+  console.log("School Project by Ernest Mutai");
   console.log("=================================================");
 
   const [deployer] = await hre.ethers.getSigners();
@@ -47,7 +47,7 @@ async function main() {
     network: "sepolia",
     chainId: 11155111,
     deployedAt: new Date().toISOString(),
-    author: "Ernerst Mutai",
+    author: "Ernest Mutai",
     etherscanUrl: `https://sepolia.etherscan.io/address/${deployedAddress}`
   };
 

@@ -1,69 +1,69 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { ethers } from "ethers";
 import defaultContractData from "./contracts/contractData.json";
-import { 
-  VoteIcon, 
-  ShieldCheckIcon, 
-  WalletIcon, 
-  CheckCircleIcon, 
-  UserIcon, 
-  SearchIcon, 
-  PlusCircleIcon, 
-  RefreshCwIcon, 
-  ClockIcon, 
-  BuildingIcon 
+import {
+  VoteIcon,
+  ShieldCheckIcon,
+  WalletIcon,
+  CheckCircleIcon,
+  UserIcon,
+  SearchIcon,
+  PlusCircleIcon,
+  RefreshCwIcon,
+  ClockIcon,
+  BuildingIcon
 } from "./components/Icons";
 
 const INITIAL_DEMO_CANDIDATES = [
-  { 
-    id: "1", 
-    name: "Ernerst Mutai", 
-    votes: "38", 
+  {
+    id: "1",
+    name: "Ernest Mutai",
+    votes: "38",
     role: "Presidential Nominee",
     department: "School of Computing & Informatics",
     platform: "Decentralized student guild governance, academic resource transparency, and verifiable student representation.",
     initials: "EM"
   },
-  { 
-    id: "2", 
-    name: "Ernerst Mutai (Academic Chair)", 
-    votes: "26", 
+  {
+    id: "2",
+    name: "Ernest Mutai (Academic Chair)",
+    votes: "26",
     role: "Guild Academic Affairs Director",
     department: "Faculty Senate Committee",
     platform: "Curriculum reform oversight, peer-to-peer tutoring grants, and digitized faculty syllabus transparency.",
     initials: "EM"
   },
-  { 
-    id: "3", 
-    name: "Brenda Chelangat", 
-    votes: "31", 
+  {
+    id: "3",
+    name: "Brenda Chelangat",
+    votes: "31",
     role: "Vice Presidential Nominee",
     department: "School of Engineering & Technology",
     platform: "Modern lab infrastructure, female STEM leadership initiatives, and sustainable green campus facilities.",
     initials: "BC"
   },
-  { 
-    id: "4", 
-    name: "Kevin Kiprop", 
-    votes: "19", 
+  {
+    id: "4",
+    name: "Kevin Kiprop",
+    votes: "19",
     role: "Guild Finance & Treasury Secretary",
     department: "School of Business & Economics",
     platform: "Real-time on-chain student activity fee auditing, bursary disbursement equity, and zero budget leakage.",
     initials: "KK"
   },
-  { 
-    id: "5", 
-    name: "Faith Wanjiku", 
-    votes: "22", 
+  {
+    id: "5",
+    name: "Faith Wanjiku",
+    votes: "22",
     role: "Student Welfare & Health Services Director",
     department: "College of Health Sciences",
     platform: "Mental health clinic funding, 24/7 campus infirmary ambulance availability, and subsidized dining plans.",
     initials: "FW"
   },
-  { 
-    id: "6", 
-    name: "David Ochieng", 
-    votes: "15", 
+  {
+    id: "6",
+    name: "David Ochieng",
+    votes: "15",
     role: "Sports & Extracurricular Affairs Coordinator",
     department: "School of Education & Arts",
     platform: "Inter-university varsity tournament funding, recreational sports equipment renewal, and creative arts festivals.",
@@ -94,7 +94,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [ballotReceipt, setBallotReceipt] = useState(null);
   const [eventsLog, setEventsLog] = useState([
-    { id: 1, message: "Electoral registry initialized with candidate Ernerst Mutai.", time: "09:00:00" },
+    { id: 1, message: "Electoral registry initialized with candidate Ernest Mutai.", time: "09:00:00" },
     { id: 2, message: "Decentralized consensus validated on Ethereum node.", time: "09:00:01" },
     { id: 3, message: "Real-time Web3 event subscriptions activated.", time: "09:00:02" }
   ]);
@@ -359,7 +359,7 @@ export default function App() {
           voter: account || "0xDemo...Voter",
           timestamp: new Date().toISOString(),
           network: "Localhost 8545 (Simulated)",
-          txHash: `0x${Array.from({length: 64}, () => Math.floor(Math.random()*16).toString(16)).join("")}`
+          txHash: `0x${Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join("")}`
         };
         setBallotReceipt(receipt);
         setIsLoading(false);
@@ -372,12 +372,12 @@ export default function App() {
     try {
       setIsLoading(true);
       showStatus(`Signing ballot transaction for ${candidateName}...`, "info");
-      
+
       const tx = await contract.vote(id);
       logEvent(`Transaction broadcasted: ${tx.hash.slice(0, 12)}...`);
-      
+
       const receipt = await tx.wait();
-      
+
       setHasVoted(true);
       setVotedCandidateId(id);
       setBallotReceipt({
@@ -415,10 +415,10 @@ export default function App() {
       const inits = nameToAdd.split(" ").map(w => w[0]).filter(Boolean).slice(0, 2).join("").toUpperCase();
       setCandidates(prev => [
         ...prev,
-        { 
-          id: nextId, 
-          name: nameToAdd, 
-          votes: "0", 
+        {
+          id: nextId,
+          name: nameToAdd,
+          votes: "0",
           role: roleToAdd,
           department: "Accredited Student Body",
           platform: "Nominated candidate platform credentials approved by the electoral committee.",
@@ -477,7 +477,7 @@ export default function App() {
   // Filter candidates
   const filteredCandidates = useMemo(() => {
     return candidates.filter(c => {
-      const matchesSearch = 
+      const matchesSearch =
         c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.department.toLowerCase().includes(searchQuery.toLowerCase());
@@ -535,7 +535,7 @@ export default function App() {
 
         <div className="institutional-actions">
           {/* Network Switchers: Localhost & Sepolia Testnet (Bonus Feature) */}
-          <button 
+          <button
             className="btn btn-outline"
             onClick={switchOrAddLocalhostNetwork}
             title="Switch MetaMask to Localhost 8545"
@@ -545,7 +545,7 @@ export default function App() {
             <span>Localhost (8545)</span>
           </button>
 
-          <button 
+          <button
             className="btn btn-outline"
             onClick={switchOrAddSepoliaNetwork}
             title="Switch MetaMask to Ethereum Sepolia Testnet"
@@ -561,8 +561,8 @@ export default function App() {
               <span>{account.slice(0, 6)}...{account.slice(-4)} | {balance} ETH</span>
             </span>
           ) : (
-            <button 
-              className="btn btn-secondary" 
+            <button
+              className="btn btn-secondary"
               onClick={connectWallet}
               disabled={isLoading}
               id="btn-connect-wallet"
@@ -589,14 +589,14 @@ export default function App() {
           <div>
             <h2 className="manifesto-title">Official Student Guild Ballot</h2>
             <p className="manifesto-lead">
-              Cryptographically verified election powered by an immutable Ethereum smart contract. 
-              Voter authentication, ballot secrecy, and double-voting prevention are governed 
+              Cryptographically verified election powered by an immutable Ethereum smart contract.
+              Voter authentication, ballot secrecy, and double-voting prevention are governed
               deterministically on-chain without centralized interference.
             </p>
           </div>
           <div className="candidate-honor-attribution">
             <span className="honor-label">Electoral Architect & Nominee</span>
-            <span className="honor-name">Ernerst Mutai</span>
+            <span className="honor-name">Ernest Mutai</span>
           </div>
         </div>
 
@@ -622,7 +622,7 @@ export default function App() {
       {statusMessage.text && (
         <div className={`ballot-alert ballot-alert-${statusMessage.type}`} id="status-alert">
           <span>{statusMessage.text}</span>
-          <button 
+          <button
             onClick={() => setStatusMessage({ text: "", type: "" })}
             style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", fontWeight: "bold" }}
           >
@@ -648,11 +648,11 @@ export default function App() {
           {ballotReceipt && (
             <div style={{ width: "100%", paddingTop: "8px", borderTop: "1px solid #bbf7d0", fontSize: "0.825rem", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "8px" }}>
               <div>
-                <span>Selected Candidate: <strong>{ballotReceipt.candidateName}</strong></span> • 
+                <span>Selected Candidate: <strong>{ballotReceipt.candidateName}</strong></span> •
                 <span style={{ marginLeft: "8px" }}>Tx Hash: <code style={{ fontFamily: "var(--font-mono)" }}>{ballotReceipt.txHash.slice(0, 16)}...</code></span>
               </div>
-              <button 
-                className="btn btn-secondary" 
+              <button
+                className="btn btn-secondary"
                 style={{ padding: "4px 10px", fontSize: "0.75rem" }}
                 onClick={() => {
                   navigator.clipboard.writeText(JSON.stringify(ballotReceipt, null, 2));
@@ -683,7 +683,7 @@ export default function App() {
         <div className="ledger-metric-cell">
           <div className="metric-label">Leading Nominee</div>
           <div className="metric-value" style={{ fontSize: "1.25rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-            {leadingCandidate ? leadingCandidate.name : "Ernerst Mutai"}
+            {leadingCandidate ? leadingCandidate.name : "Ernest Mutai"}
           </div>
           <div className="metric-sub">{leadingCandidate ? `${leadingCandidate.votes} votes` : "0 votes"}</div>
         </div>
@@ -713,19 +713,19 @@ export default function App() {
         </div>
 
         <div className="category-tabs">
-          <button 
+          <button
             className={`tab-btn ${selectedCategory === "all" ? "active" : ""}`}
             onClick={() => setSelectedCategory("all")}
           >
             All Candidates ({candidates.length})
           </button>
-          <button 
+          <button
             className={`tab-btn ${selectedCategory === "executive" ? "active" : ""}`}
             onClick={() => setSelectedCategory("executive")}
           >
             Presidency & Executive
           </button>
-          <button 
+          <button
             className={`tab-btn ${selectedCategory === "guild" ? "active" : ""}`}
             onClick={() => setSelectedCategory("guild")}
           >
@@ -753,13 +753,13 @@ export default function App() {
           const isSelected = votedCandidateId === c.id;
 
           return (
-            <div 
-              key={c.id} 
+            <div
+              key={c.id}
               className={`candidate-ballot-row ${isSelected ? "selected-candidate-row" : ""}`}
               id={`candidate-card-${c.id}`}
             >
               <div className="ballot-avatar-col">
-                <div className={`candidate-monogram ${c.name.includes("Ernerst Mutai") ? "monogram-featured" : ""}`}>
+                <div className={`candidate-monogram ${c.name.includes("Ernest Mutai") ? "monogram-featured" : ""}`}>
                   {c.initials || "CD"}
                 </div>
                 <div className="ballot-index-num">#{c.id.padStart(2, "0")}</div>
@@ -783,8 +783,8 @@ export default function App() {
                 <div className="vote-tally-bar-container">
                   <span className="vote-count-label">{c.votes} votes ({percentage}%)</span>
                   <div className="ballot-progress-track">
-                    <div 
-                      className="ballot-progress-fill" 
+                    <div
+                      className="ballot-progress-fill"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -829,7 +829,7 @@ export default function App() {
             <h4 className="registrar-title">Returning Officer • Administrative Controls</h4>
           </div>
           <div style={{ display: "flex", gap: "8px" }}>
-            <button 
+            <button
               className="btn btn-secondary"
               style={{ padding: "6px 12px", fontSize: "0.8rem" }}
               onClick={toggleVotingStatus}
@@ -842,7 +842,7 @@ export default function App() {
           </div>
         </div>
         <p className="registrar-desc">
-          Authorized election officials can register certified student candidates directly into the smart contract. 
+          Authorized election officials can register certified student candidates directly into the smart contract.
           Owner address: <code style={{ color: "var(--text-primary)" }}>{ownerAddress || "0x9fE4...a6e0 (Deployer)"}</code>
         </p>
 
@@ -864,8 +864,8 @@ export default function App() {
             id="input-candidate-role"
             style={{ maxWidth: "260px" }}
           />
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="btn btn-secondary"
             disabled={isLoading || !newCandidateName.trim()}
             id="btn-add-candidate"
@@ -894,7 +894,7 @@ export default function App() {
             </div>
             <div className="spec-row">
               <span className="spec-key">Lead Architect</span>
-              <span className="spec-value">Ernerst Mutai</span>
+              <span className="spec-value">Ernest Mutai</span>
             </div>
             <div className="spec-row">
               <span className="spec-key">Target Network</span>

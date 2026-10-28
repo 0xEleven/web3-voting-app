@@ -1,8 +1,8 @@
 {
   "name": "web3-voting-dapp",
   "version": "1.0.0",
-  "description": "Decentralized Voting Application for School Project by Ernerst Mutai",
-  "author": "Ernerst Mutai",
+  "description": "Decentralized Voting Application for School Project by Ernest Mutai",
+  "author": "Ernest Mutai",
   "license": "MIT",
   "scripts": {
     "dev": "npm --prefix frontend run dev",

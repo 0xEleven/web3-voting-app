@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 /**
  * @title Voting Smart Contract
- * @dev School Project by Ernerst Mutai
+ * @dev School Project by Ernest Mutai
  * @notice Implements Lesson 10 Architecture with administrative controls,
  *         cryptographic single-vote enforcement, and real-time events.
  */
@@ -32,8 +32,8 @@ contract Voting {
 
     constructor() {
         owner = msg.sender;
-        _addCandidate("Ernerst Mutai");
-        _addCandidate("Ernerst Mutai (Academic Chair)");
+        _addCandidate("Ernest Mutai");
+        _addCandidate("Ernest Mutai (Academic Chair)");
         _addCandidate("Brenda Chelangat");
         _addCandidate("Kevin Kiprop");
         _addCandidate("Faith Wanjiku");

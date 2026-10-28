@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 async function main() {
-  console.log("Deploying Voting smart contract for school project (Ernerst Mutai)...");
+  console.log("Deploying Voting smart contract for school project (Ernest Mutai)...");
 
   const signers = await hre.ethers.getSigners();
   // Use Account #1 to produce a unique, unflagged contract address
@@ -36,7 +36,7 @@ async function main() {
     abi: abi,
     network: hre.network.name,
     deployedAt: new Date().toISOString(),
-    author: "Ernerst Mutai"
+    author: "Ernest Mutai"
   };
 
   fs.writeFileSync(

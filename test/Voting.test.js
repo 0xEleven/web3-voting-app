@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("Voting Contract — School Capstone by Ernerst Mutai", function () {
+describe("Voting Contract — School Capstone by Ernest Mutai", function () {
   let voting;
   let owner;
   let voter1;
@@ -20,17 +20,17 @@ describe("Voting Contract — School Capstone by Ernerst Mutai", function () {
       expect(await voting.owner()).to.equal(owner.address);
     });
 
-    it("Should initialize with candidate Ernerst Mutai and total 6 nominees", async function () {
+    it("Should initialize with candidate Ernest Mutai and total 6 nominees", async function () {
       const count = await voting.candidatesCount();
       expect(count).to.equal(6n);
 
       const candidate1 = await voting.candidates(1);
       expect(candidate1.id).to.equal(1n);
-      expect(candidate1.name).to.equal("Ernerst Mutai");
+      expect(candidate1.name).to.equal("Ernest Mutai");
       expect(candidate1.voteCount).to.equal(0n);
 
       const candidate2 = await voting.candidates(2);
-      expect(candidate2.name).to.equal("Ernerst Mutai (Academic Chair)");
+      expect(candidate2.name).to.equal("Ernest Mutai (Academic Chair)");
     });
 
     it("Should initialize with voting active by default", async function () {
@@ -39,7 +39,7 @@ describe("Voting Contract — School Capstone by Ernerst Mutai", function () {
   });
 
   describe("Voting Mechanics & Cryptographic Enforcement", function () {
-    it("Should allow voter1 to cast a vote for Ernerst Mutai", async function () {
+    it("Should allow voter1 to cast a vote for Ernest Mutai", async function () {
       await expect(voting.connect(voter1).vote(1))
         .to.emit(voting, "Voted")
         .withArgs(1n, voter1.address);
@@ -119,7 +119,7 @@ describe("Voting Contract — School Capstone by Ernerst Mutai", function () {
     it("Should correctly return candidate details via getCandidate", async function () {
       const [id, name, votes] = await voting.getCandidate(1);
       expect(id).to.equal(1n);
-      expect(name).to.equal("Ernerst Mutai");
+      expect(name).to.equal("Ernest Mutai");
       expect(votes).to.equal(0n);
     });
 
